@@ -1,1 +1,91 @@
+2- 
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	 
+	 int[][] poltrona = new int[20][10];
+	 
+	 for (int i = 0; i < 20; i++){
+	     for (int j = 0; j < 10; j++){
+	         poltrona[i][j] = -1;
+	     }
+	 }
+	 int opcao = 0;
+	 while (opcao != 4) {
+	     
+    System.out.println("""
+    1 - Vender ingresso
+    2 - Exibir total de ingressos vendidos
+    3 - Exibir mapa das poltronas
+    4 - Encerrar programa""");
+    opcao = sc.nextInt();
+    switch(opcao) {
+     case 1: {
+    int fileira, cadeira;
 
+    System.out.println("Digite o número da fileira (1 a 20):");
+    fileira = sc.nextInt();
+
+    System.out.println("Digite o número da poltrona (1 a 10):");
+    cadeira = sc.nextInt();
+
+    if (fileira < 1 || fileira > 20 ||
+        cadeira < 1 || cadeira > 10) {
+        System.out.println("Fileira ou poltrona inválida!");
+        
+    } else if (poltrona[fileira - 1][cadeira - 1] == -1) {
+        poltrona[fileira - 1][cadeira - 1] = 1;
+        System.out.println("Ingresso vendido com sucesso!");
+        
+    } else {
+        System.out.println("Poltrona já foi vendida");
+    }
+
+    break;
+    }
+    case 2: {
+    int totalVendidos = 0;
+
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (poltrona[i][j] == 1) {
+                totalVendidos++;
+            }
+        }
+    }
+
+    System.out.println("Total de ingressos vendidos: " + totalVendidos);
+    break;
+    }
+    
+    case 3: {
+    System.out.println("Mapa das poltronas (L = Livre, V = Vendida)");
+
+    for (int i = 0; i < 20; i++) {
+        System.out.print("Fileira " + (i + 1) + ": ");
+
+        for (int j = 0; j < 10; j++) {
+            if (poltrona[i][j] == -1) {
+                System.out.print("L ");
+            } else {
+                System.out.print("V ");
+            }
+        }
+
+        System.out.println();
+    }
+
+    break;
+    }
+    case 4:
+        System.out.println("Programa encerrado!");
+        break;
+
+    default:
+        System.out.println("Opção inválida!");
+
+       }
+	 }
+	}
+}
