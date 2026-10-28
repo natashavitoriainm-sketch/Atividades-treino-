@@ -1,1 +1,21 @@
 1-
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	
+	double[][] notas = new double[3][2];
+	
+	for (int i = 0; i < 3; i++) {
+	    for (int j = 0; j < 2; j++) {
+	        System.out.println("Digite sua nota:");
+	        notas[i][j] = sc.nextDouble();
+	     }
+     	}
+     	for (int i = 0; i < 3; i++){
+     	   double  media = (notas[i][0] + notas[i][1]) / 2;
+     	    System.out.println("Média do aluno " + (i + 1) + ": " + media);
+     	}
+	}
+}
+
